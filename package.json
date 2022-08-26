@@ -21,7 +21,11 @@
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-paper": "^4.10.1",
     "react-native-screens": "3.15.0",
-    "react-native-dotenv": "^3.3.1"
+    "react-native-dotenv": "^3.3.1",
+    "@expo/vector-icons": "^13.0.0",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-safe-area-view": "^1.1.1",
+    "react-native-gesture-handler": "^1.10.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
