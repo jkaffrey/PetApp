@@ -66,7 +66,7 @@ export default function App() {
             borderWidth: 3,
             borderColor: APP_COLORS.primary,
             backgroundColor: APP_COLORS.secondary,
-            ...style.shadow,
+            ...styles.shadow,
           }}
         >
           {children}
@@ -83,7 +83,7 @@ export default function App() {
       />
       <SafeAreaView
         forceInset={{ bottom: "never" }}
-        style={style.mainContainer}
+        style={styles.mainContainer}
       >
         <PaperProvider theme={paperTheme}>
           <NavigationContainer theme={MyTheme}>
@@ -124,7 +124,7 @@ export default function App() {
   );
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: APP_COLORS.primary,
