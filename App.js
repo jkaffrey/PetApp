@@ -1,10 +1,13 @@
-import React from "react";
+import "./firebase";
+
+import React, { useState, useEffect } from "react";
 import {
   Dimensions,
   StatusBar,
   StyleSheet,
   TouchableOpacity,
   View,
+  LogBox,
 } from "react-native";
 import {
   NavigationContainer,
@@ -19,6 +22,9 @@ import SafeAreaView from "react-native-safe-area-view";
 
 import HomeStackScreen from "./ScreenStack/HomeStackScreen";
 import { APP_COLORS } from "./Helpers/colors";
+
+/** Firebase Imports */
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Tab = createBottomTabNavigator();
 // https://reactnavigation.org/docs/themes/
@@ -47,6 +53,20 @@ const paperTheme = {
 const { width, height } = Dimensions.get("window");
 
 export default function App() {
+  LogBox.ignoreLogs([""]);
+
+  /** Userbased firebase login authentication */
+  const [user, setUser] = useState();
+
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user);
+    } else {
+      setUser(null);
+    }
+  });
+
   const CustomHomeButton = ({ children, onPress }) => {
     return (
       <TouchableOpacity
@@ -99,7 +119,7 @@ export default function App() {
             >
               <Tab.Screen
                 name="Home"
-                children={() => <HomeStackScreen />}
+                children={() => <HomeStackScreen appUser={user} />}
                 options={{
                   headerShown: false,
                   tabBarLabel: "",

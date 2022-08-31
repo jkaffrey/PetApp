@@ -6,18 +6,16 @@ import NavigationBarHeader from "../Components/NavigationBarHeader";
 
 const HomeStack = createStackNavigator();
 
-export default function HomeStackScreen() {
+export default function HomeStackScreen({ appUser }) {
   return (
     <HomeStack.Navigator
       initialRouteName="HomeScreen"
       screenOptions={{
-        header: (props) => (
-          <NavigationBarHeader {...props} selectedUser={selectedUser} />
-        ),
+        header: (props) => <NavigationBarHeader {...props} />,
       }}
     >
       <HomeStack.Screen name="HomeScreen" options={{ headerShown: false }}>
-        {(props) => <HomeScreen {...props} />}
+        {(props) => <HomeScreen {...props} appUser={appUser} />}
       </HomeStack.Screen>
     </HomeStack.Navigator>
   );
