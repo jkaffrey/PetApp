@@ -8,5 +8,6 @@ export const APP_COLORS = {
   black: "#2a2b2e",
   primary: "#779CAB",
   secondary: "#34435E",
+  activeButton: "#D9D9D9",
   red: "#a30b37",
 };

@@ -14,7 +14,7 @@ import {
   DefaultTheme as NativeTheme,
 } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, FontAwesome5 } from "@expo/vector-icons";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -127,7 +127,7 @@ export default function App() {
                   tabBarIcon: ({ color, size }) => (
                     <View style={{ alignItems: "center" }}>
                       <MaterialCommunityIcons
-                        name="dresser"
+                        name="dog"
                         size={36}
                         color={APP_COLORS.primary}
                       />
