@@ -5,6 +5,7 @@ export const TRANSPARENT_COLORS = {
 
 export const APP_COLORS = {
   white: "#e5e5e5",
+  offWhite: "#DDD8C4",
   black: "#2a2b2e",
   primary: "#779CAB",
   secondary: "#34435E",
