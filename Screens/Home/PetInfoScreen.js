@@ -6,14 +6,18 @@ export default function PetInfoScreen({ appUser, route }) {
 
   return (
     <View style={styles.container}>
-      <Text>Pet Name: {pet.name}</Text>
+      <Text style={styles.petName}>Pet Name: {pet.name}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
     flex: 1,
+    marginLeft: 16,
+  },
+  petName: {
+    marginTop: 16,
+    fontSize: 16,
   },
 });
