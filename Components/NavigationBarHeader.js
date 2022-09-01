@@ -7,6 +7,12 @@ export default function NavigationBarHeader({ navigation, navigationTitle }) {
   const route = useRoute();
 
   const readableHeader = (routeName) => {
+    if (routeName === "PetInfo") {
+      return (
+        (route?.params?.pet?.name ? route.params.pet.name + "'s" : "Pet") +
+        " Information"
+      );
+    }
     return "";
   };
 
