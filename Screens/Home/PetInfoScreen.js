@@ -1,23 +1,34 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
+import PetInfoButton from "../../Components/Pets/PetInfoButton";
 
 export default function PetInfoScreen({ appUser, route }) {
   const { pet } = route.params;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.petName}>Pet Name: {pet.name}</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <View style={styles.petIcons}>
+        <PetInfoButton label={"General Information"} iconName={"information"} />
+        <PetInfoButton label={"Veterinarian Records"} iconName={"needle"} />
+      </View>
+      <View style={styles.petIcons}>
+        <PetInfoButton label={"Pictures"} iconName={"file-image"} />
+        <PetInfoButton label={"Notes"} iconName={"book-open"} />
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginLeft: 16,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 32,
   },
-  petName: {
-    marginTop: 16,
-    fontSize: 16,
+  petIcons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 16,
   },
 });

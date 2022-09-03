@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
   },
 
   item: {
+    padding: 10,
     width: width - width * 0.25,
     height: screen.height * 0.65,
     shadowColor: "#000000",

@@ -97,10 +97,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor={APP_COLORS.primary}
-      />
+      <StatusBar barStyle="light-content" />
       <SafeAreaView
         forceInset={{ bottom: "never" }}
         style={styles.mainContainer}
@@ -112,8 +109,11 @@ export default function App() {
               screenOptions={{
                 tabBarStyle: {
                   elevation: 0,
-                  backgroundColor: APP_COLORS.secondary,
                   padding: 0,
+                  backgroundColor: APP_COLORS.secondary,
+                  borderTopColor: APP_COLORS.black,
+                  borderTopWidth: 2,
+                  backgroundColor: APP_COLORS.secondary,
                 },
               }}
             >
