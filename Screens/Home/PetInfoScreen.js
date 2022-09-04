@@ -7,6 +7,18 @@ export default function PetInfoScreen({ appUser, route }) {
 
   let [selectedButton, setSelectedButton] = useState("Information");
 
+  let renderSelectedView = () => {
+    if (selectedButton === "Information") {
+      return <Text>Information</Text>;
+    } else if (selectedButton === "Records") {
+      return <Text>Records</Text>;
+    } else if (selectedButton === "Pictures") {
+      return <Text>Pictures</Text>;
+    } else if (selectedButton === "Notes") {
+      return <Text>Notes</Text>;
+    }
+  };
+
   return (
     <ScrollView style={styles.container}>
       <ScrollView
@@ -39,6 +51,8 @@ export default function PetInfoScreen({ appUser, route }) {
           setSelectedButton={setSelectedButton}
         />
       </ScrollView>
+      {/* Actual Component Content */}
+      {renderSelectedView()}
     </ScrollView>
   );
 }
