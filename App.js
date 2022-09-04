@@ -145,7 +145,7 @@ export default function App() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: APP_COLORS.primary,
+    backgroundColor: APP_COLORS.secondary,
   },
 
   shadow: {
