@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, StatusBar } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { Appbar } from "react-native-paper";
+import { APP_COLORS } from "../Helpers/colors";
 
 export default function NavigationBarHeader({ navigation, navigationTitle }) {
   const route = useRoute();
@@ -21,14 +22,19 @@ export default function NavigationBarHeader({ navigation, navigationTitle }) {
       {navigation.canGoBack ? (
         <Appbar.BackAction onPress={navigation.goBack} />
       ) : null}
-      <Appbar.Content title={readableHeader(route.name)} />
+      <Appbar.Content
+        titleStyle={styles.titleStyle}
+        title={readableHeader(route.name)}
+      />
     </Appbar>
   );
 }
 
 const styles = StyleSheet.create({
   bottomBorder: {
-    borderBottomColor: "black",
-    borderBottomWidth: 2,
+    backgroundColor: APP_COLORS.primary,
+  },
+  titleStyle: {
+    fontWeight: "bold",
   },
 });

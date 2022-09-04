@@ -8,6 +8,14 @@ export default function HomeScreen({ appUser }) {
       name: "Claus",
       dob: "4/02/2018",
     },
+    {
+      name: "Cornelius",
+      dob: "2/14/2020",
+    },
+    {
+      name: "Shyloh",
+      dob: "1/01/2021",
+    },
   ];
 
   return (

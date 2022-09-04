@@ -39,7 +39,7 @@ export default function PetSelector({ appUser, pets }) {
       monthStr = "months";
     }
 
-    return `${age} ${yearStr}` + (m !== 0 ? ` ${m} ${monthStr}` : "");
+    return `${age} ${yearStr}` + (m !== 0 ? ` ${m} ${monthStr} old` : "");
   };
 
   const navigateToPet = () => {
@@ -62,7 +62,6 @@ export default function PetSelector({ appUser, pets }) {
           source={pet.petImage || defaultPetImg}
           containerStyle={styles.imageContainer}
           style={styles.image}
-          parallaxFactor={0.4}
           {...parallaxProps}
         />
         <View style={styles.itemContent}>
@@ -95,6 +94,7 @@ export default function PetSelector({ appUser, pets }) {
         bottom: -1 * (height * 0.19) + tabBarHeight,
       }}
     >
+      <Text style={styles.myPets}>My Pets</Text>
       <Carousel
         loop={true}
         hasParallaxImages={true}
@@ -113,14 +113,21 @@ export default function PetSelector({ appUser, pets }) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
     flex: 1,
   },
 
+  myPets: {
+    paddingLeft: 32,
+    fontWeight: "bold",
+    fontSize: 32,
+    color: APP_COLORS.black,
+  },
+
   item: {
+    padding: 10,
     width: width - width * 0.25,
-    height: screen.height * 0.65,
-    shadowColor: "#000000",
+    height: screen.height * 0.6,
+    shadowColor: APP_COLORS.black,
     shadowOffset: {
       width: 0,
       height: 10,
@@ -132,36 +139,36 @@ const styles = StyleSheet.create({
   itemContent: {
     bottom: width * 0.35,
     paddingBottom: 15,
-    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
   },
 
   petName: {
-    color: APP_COLORS.offWhite,
+    color: APP_COLORS.primary,
     fontSize: 30,
     paddingTop: 15,
   },
 
   petAge: {
-    color: APP_COLORS.offWhite,
+    color: APP_COLORS.primary,
     paddingBottom: 15,
   },
 
   petViewEdit: {
-    flexDirection: "row",
-    paddingLeft: 15,
+    alignItems: "flex-end",
+    paddingRight: 15,
     paddingTop: 4,
   },
 
   petViewEditText: {
     fontSize: 16,
-    color: APP_COLORS.offWhite,
-    textDecorationLine: "underline",
+    color: APP_COLORS.primary,
+    fontWeight: "500",
   },
 
   imageContainer: {
     flex: 1,
     marginBottom: Platform.select({ ios: 0, android: 1 }), // Prevent a random Android rendering issue
-    backgroundColor: "white",
+    backgroundColor: APP_COLORS.primary,
     borderRadius: 8,
   },
 

@@ -4,11 +4,11 @@ export const TRANSPARENT_COLORS = {
 };
 
 export const APP_COLORS = {
-  white: "#e5e5e5",
-  offWhite: "#DDD8C4",
-  black: "#2a2b2e",
-  primary: "#779CAB",
-  secondary: "#34435E",
+  white: "#FCFCFC",
+  offWhite: "#F2F5EA",
+  black: "#30292F",
+  primary: "#D1D5DE",
+  secondary: "#703D57",
   activeButton: "#D9D9D9",
   red: "#a30b37",
 };
