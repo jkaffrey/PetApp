@@ -97,7 +97,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="dark-content" />
       <SafeAreaView
         forceInset={{ bottom: "never" }}
         style={styles.mainContainer}
@@ -111,9 +111,7 @@ export default function App() {
                   elevation: 0,
                   padding: 0,
                   backgroundColor: APP_COLORS.secondary,
-                  borderTopColor: APP_COLORS.black,
-                  borderTopWidth: 2,
-                  backgroundColor: APP_COLORS.secondary,
+                  borderTopWidth: 0,
                 },
               }}
             >
@@ -147,7 +145,7 @@ export default function App() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: APP_COLORS.secondary,
+    backgroundColor: APP_COLORS.primary,
   },
 
   shadow: {

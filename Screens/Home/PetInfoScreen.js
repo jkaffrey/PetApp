@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import PetInfoButton from "../../Components/Pets/PetInfoButton";
 
 export default function PetInfoScreen({ appUser, route }) {
   const { pet } = route.params;
 
+  let [selectedButton, setSelectedButton] = useState("Information");
+
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.petIcons}>
-        <PetInfoButton label={"General Information"} iconName={"information"} />
-        <PetInfoButton label={"Veterinarian Records"} iconName={"needle"} />
-      </View>
-      <View style={styles.petIcons}>
-        <PetInfoButton label={"Pictures"} iconName={"file-image"} />
-        <PetInfoButton label={"Notes"} iconName={"book-open"} />
-      </View>
+      <ScrollView
+        horizontal={true}
+        style={styles.petIcons}
+        showsHorizontalScrollIndicator={false}
+      >
+        <PetInfoButton
+          label={"Information"}
+          iconName={"information"}
+          selected={selectedButton}
+        />
+        <PetInfoButton
+          label={"Records"}
+          iconName={"needle"}
+          selected={selectedButton}
+        />
+        <PetInfoButton
+          label={"Pictures"}
+          iconName={"file-image"}
+          selected={selectedButton}
+        />
+        <PetInfoButton
+          label={"Notes"}
+          iconName={"book-open"}
+          selected={selectedButton}
+        />
+      </ScrollView>
     </ScrollView>
   );
 }
@@ -26,9 +46,5 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingTop: 32,
   },
-  petIcons: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 16,
-  },
+  petIcons: {},
 });

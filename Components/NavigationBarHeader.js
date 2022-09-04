@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, StatusBar } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { Appbar } from "react-native-paper";
+import { APP_COLORS } from "../Helpers/colors";
 
 export default function NavigationBarHeader({ navigation, navigationTitle }) {
   const route = useRoute();
@@ -28,7 +29,6 @@ export default function NavigationBarHeader({ navigation, navigationTitle }) {
 
 const styles = StyleSheet.create({
   bottomBorder: {
-    borderBottomColor: "black",
-    borderBottomWidth: 2,
+    backgroundColor: APP_COLORS.primary,
   },
 });

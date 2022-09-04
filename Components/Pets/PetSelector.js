@@ -95,6 +95,7 @@ export default function PetSelector({ appUser, pets }) {
         bottom: -1 * (height * 0.19) + tabBarHeight,
       }}
     >
+      <Text style={styles.myPets}>My Pets</Text>
       <Carousel
         loop={true}
         hasParallaxImages={true}
@@ -115,6 +116,12 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     flex: 1,
+  },
+
+  myPets: {
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 32,
   },
 
   item: {
