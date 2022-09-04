@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import PetInfoButton from "../../Components/Pets/PetInfoButton";
 
 export default function PetInfoScreen({ appUser, route }) {
@@ -18,21 +18,25 @@ export default function PetInfoScreen({ appUser, route }) {
           label={"Information"}
           iconName={"information"}
           selected={selectedButton}
+          setSelectedButton={setSelectedButton}
         />
         <PetInfoButton
           label={"Records"}
           iconName={"needle"}
           selected={selectedButton}
+          setSelectedButton={setSelectedButton}
         />
         <PetInfoButton
           label={"Pictures"}
           iconName={"file-image"}
           selected={selectedButton}
+          setSelectedButton={setSelectedButton}
         />
         <PetInfoButton
           label={"Notes"}
           iconName={"book-open"}
           selected={selectedButton}
+          setSelectedButton={setSelectedButton}
         />
       </ScrollView>
     </ScrollView>
@@ -42,9 +46,9 @@ export default function PetInfoScreen({ appUser, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingTop: 32,
+    paddingTop: 20,
   },
-  petIcons: {},
+  petIcons: {
+    paddingLeft: 8,
+  },
 });

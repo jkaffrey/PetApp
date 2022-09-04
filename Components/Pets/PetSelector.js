@@ -62,7 +62,6 @@ export default function PetSelector({ appUser, pets }) {
           source={pet.petImage || defaultPetImg}
           containerStyle={styles.imageContainer}
           style={styles.image}
-          parallaxFactor={0.4}
           {...parallaxProps}
         />
         <View style={styles.itemContent}>
@@ -119,15 +118,17 @@ const styles = StyleSheet.create({
   },
 
   myPets: {
-    textAlign: "center",
+    // textAlign: "center",
+    paddingLeft: 32,
     fontWeight: "bold",
     fontSize: 32,
+    color: APP_COLORS.black,
   },
 
   item: {
     padding: 10,
     width: width - width * 0.25,
-    height: screen.height * 0.65,
+    height: screen.height * 0.6,
     shadowColor: "#000000",
     shadowOffset: {
       width: 0,

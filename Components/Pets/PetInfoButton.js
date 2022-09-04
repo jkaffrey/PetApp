@@ -6,7 +6,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { APP_COLORS } from "../../Helpers/colors";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-export default function PetInfoButton({ label, iconName, selected, onClick }) {
+export default function PetInfoButton({
+  label,
+  iconName,
+  selected,
+  setSelectedButton,
+}) {
   let isSelected = () => {
     return selected === label;
   };
@@ -19,7 +24,9 @@ export default function PetInfoButton({ label, iconName, selected, onClick }) {
           : APP_COLORS.primary,
         ...styles.mainContainer,
       }}
-      onClick={() => {}}
+      onPress={() => {
+        setSelectedButton(label);
+      }}
     >
       <View style={styles.innerContainer}>
         <View
@@ -62,8 +69,7 @@ const styles = StyleSheet.create({
       height: 3,
     },
     shadowOpacity: 0.35,
-    shadowRadius: 5.5,
-    elevation: 5,
+    shadowRadius: 3.5,
   },
   innerContainer: {
     justifyContent: "center",
