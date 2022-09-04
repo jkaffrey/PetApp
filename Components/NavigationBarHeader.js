@@ -22,7 +22,10 @@ export default function NavigationBarHeader({ navigation, navigationTitle }) {
       {navigation.canGoBack ? (
         <Appbar.BackAction onPress={navigation.goBack} />
       ) : null}
-      <Appbar.Content title={readableHeader(route.name)} />
+      <Appbar.Content
+        titleStyle={styles.titleStyle}
+        title={readableHeader(route.name)}
+      />
     </Appbar>
   );
 }
@@ -30,5 +33,8 @@ export default function NavigationBarHeader({ navigation, navigationTitle }) {
 const styles = StyleSheet.create({
   bottomBorder: {
     backgroundColor: APP_COLORS.primary,
+  },
+  titleStyle: {
+    fontWeight: "bold",
   },
 });

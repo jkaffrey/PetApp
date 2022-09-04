@@ -60,10 +60,10 @@ const styles = StyleSheet.create({
   mainContainer: {
     borderRadius: 16,
     width: 125,
-    marginRight: 8,
+    marginRight: 12,
     marginBottom: 10,
     marginTop: 6,
-    shadowColor: "#000000",
+    shadowColor: APP_COLORS.black,
     shadowOffset: {
       width: 0,
       height: 3,

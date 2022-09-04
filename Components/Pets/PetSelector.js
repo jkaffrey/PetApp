@@ -39,7 +39,7 @@ export default function PetSelector({ appUser, pets }) {
       monthStr = "months";
     }
 
-    return `${age} ${yearStr}` + (m !== 0 ? ` ${m} ${monthStr}` : "");
+    return `${age} ${yearStr}` + (m !== 0 ? ` ${m} ${monthStr} old` : "");
   };
 
   const navigateToPet = () => {
