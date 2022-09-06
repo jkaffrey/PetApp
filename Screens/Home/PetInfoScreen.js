@@ -48,6 +48,7 @@ export default function PetInfoScreen({ appUser, route }) {
           iconName={"file-image"}
           selected={selectedButton}
           setSelectedButton={setSelectedButton}
+          preventSelect={true}
           onClick={() => {
             navigation.navigate("PetPictures", {
               pet,
