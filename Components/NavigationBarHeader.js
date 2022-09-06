@@ -13,6 +13,11 @@ export default function NavigationBarHeader({ navigation, navigationTitle }) {
         (route?.params?.pet?.name ? route.params.pet.name + "'s" : "Pet") +
         " Information"
       );
+    } else if (routeName === "PetPictures") {
+      return (
+        (route?.params?.pet?.name ? route.params.pet.name + "'s" : "Pet") +
+        " Pictures"
+      );
     }
     return "";
   };
