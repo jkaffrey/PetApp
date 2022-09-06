@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   petPictures: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
     flexDirection: "row",
     flexWrap: "wrap",
     margin: 16,

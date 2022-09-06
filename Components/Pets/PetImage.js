@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
   image: {
     height: SCREEN_WIDTH / 4,
     width: SCREEN_WIDTH / 4,
-    marginRight: 8,
     marginBottom: 8,
     borderRadius: 8,
   },
