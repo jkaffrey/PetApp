@@ -75,7 +75,7 @@ export default function Login({ appUser }) {
         Signup
       </Button>
 
-      <TextInput style={styles.forgotPassword}>Fogot Your Password? </TextInput>
+      <TextInput style={styles.forgotPassword}>Forgot Password?</TextInput>
     </View>
   );
 }
