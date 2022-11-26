@@ -1,8 +1,12 @@
-import React, { useReducer } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { useEffect } from "react";
+import { StyleSheet, View } from "react-native";
 import PetSelector from "../../Components/Pets/PetSelector";
 
 export default function HomeScreen({ appUser }) {
+  useEffect(() => {
+    console.log(appUser);
+  });
+
   let testPets = [
     {
       name: "Claus",
@@ -13,16 +17,13 @@ export default function HomeScreen({ appUser }) {
       dob: "2/14/2020",
     },
     {
-      name: "Shyloh",
+      name: "Shiloh",
       dob: "1/01/2021",
     },
   ];
 
   return (
     <View style={styles.container}>
-      <Text style={styles.startingText}>Begin by putting some stuff here</Text>
-      <Text>The currently logged in user is: {appUser || "null"}</Text>
-
       <PetSelector appUser={appUser} pets={testPets} />
     </View>
   );
