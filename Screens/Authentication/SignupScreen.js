@@ -22,7 +22,7 @@ import SimpleTextInput from "../../Components/SimpleTextInput";
 import { useNavigation } from "@react-navigation/native";
 import LoadingScreen from "../../Components/LoadingScreen";
 
-export default function SignUp({ loading, setLoading }) {
+export default function SignUp({ setLoading }) {
   const navigation = useNavigation();
 
   const [email, setEmail] = useState("");
@@ -50,11 +50,15 @@ export default function SignUp({ loading, setLoading }) {
           })
           .catch((err) => {
             signOut();
-            alert("Failed to successfully create user account.", err);
+            alert(
+              "Failed to create account, please try again. \n" + err.message
+            );
+            setLoading(false);
           });
       })
       .catch((error) => {
         alert("Failed to create account, please try again. \n" + error.message);
+        setLoading(false);
       });
   };
 

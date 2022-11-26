@@ -17,7 +17,9 @@ export default function AuthStackScreen({ loading, setLoading }) {
       }}
     >
       <AuthStack.Screen name="Login" options={{ headerShown: false }}>
-        {(props) => <Login {...props} />}
+        {(props) => (
+          <Login {...props} loading={loading} setLoading={setLoading} />
+        )}
       </AuthStack.Screen>
 
       <AuthStack.Screen name="signUp" options={{ headerShown: false }}>

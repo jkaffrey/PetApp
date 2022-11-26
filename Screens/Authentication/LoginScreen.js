@@ -13,7 +13,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import SimpleTextInput from "../../Components/SimpleTextInput";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Login() {
+export default function Login({ setLoading }) {
   const navigation = useNavigation();
 
   const [email, setEmail] = useState("");
@@ -21,9 +21,11 @@ export default function Login() {
 
   const login = () => {
     const auth = getAuth();
+    setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        setLoading(false);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -35,6 +37,7 @@ export default function Login() {
         } else {
           Alert.alert("Failed to login: \n" + errorMessage);
         }
+        setLoading(false);
       });
   };
 
