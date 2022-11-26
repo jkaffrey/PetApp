@@ -21,7 +21,9 @@ export default function HomeScreen({ appUser }) {
   return (
     <View style={styles.container}>
       <Text style={styles.startingText}>Begin by putting some stuff here</Text>
-      <Text>The currently logged in user is: {appUser || "null"}</Text>
+      <Text>
+        The currently logged in user is: {appUser.displayName || "null"}
+      </Text>
 
       <PetSelector appUser={appUser} pets={testPets} />
     </View>
