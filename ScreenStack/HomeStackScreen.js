@@ -8,7 +8,7 @@ import PetPicturesScreen from "../Screens/Home/PetPicturesScreen";
 
 const HomeStack = createStackNavigator();
 
-export default function HomeStackScreen({ appUser }) {
+export default function HomeStackScreen({ appUser, loading, setLoading }) {
   return (
     <HomeStack.Navigator
       initialRouteName="HomeScreen"
@@ -17,11 +17,25 @@ export default function HomeStackScreen({ appUser }) {
       }}
     >
       <HomeStack.Screen name="HomeScreen" options={{ headerShown: false }}>
-        {(props) => <HomeScreen {...props} appUser={appUser} />}
+        {(props) => (
+          <HomeScreen
+            {...props}
+            appUser={appUser}
+            loading={loading}
+            setLoading={setLoading}
+          />
+        )}
       </HomeStack.Screen>
 
       <HomeStack.Screen name="PetInfo">
-        {(props) => <PetInfoScreen {...props} appUser={appUser} />}
+        {(props) => (
+          <PetInfoScreen
+            {...props}
+            appUser={appUser}
+            loading={loading}
+            setLoading={setLoading}
+          />
+        )}
       </HomeStack.Screen>
 
       <HomeStack.Screen name="PetPictures">
