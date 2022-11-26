@@ -22,6 +22,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import SafeAreaView from "react-native-safe-area-view";
 
 import HomeStackScreen from "./ScreenStack/HomeStackScreen";
+import AuthStackScreen from "./ScreenStack/AuthStackScreen";
 import { APP_COLORS } from "./Helpers/colors";
 
 /** Firebase Imports */
@@ -105,37 +106,41 @@ export default function App() {
       >
         <PaperProvider theme={paperTheme}>
           <NavigationContainer theme={MyTheme}>
-            <Tab.Navigator
-              initialRouteName="Home"
-              screenOptions={{
-                tabBarStyle: {
-                  elevation: 0,
-                  padding: 0,
-                  backgroundColor: APP_COLORS.secondary,
-                  borderTopWidth: 0,
-                },
-              }}
-            >
-              <Tab.Screen
-                name="Home"
-                children={() => <HomeStackScreen appUser={user} />}
-                options={{
-                  headerShown: false,
-                  tabBarLabel: "",
-                  tabBarLabelStyle: { display: "none" },
-                  tabBarIcon: ({ color, size }) => (
-                    <View style={{ alignItems: "center" }}>
-                      <MaterialCommunityIcons
-                        name="dog"
-                        size={36}
-                        color={APP_COLORS.primary}
-                      />
-                    </View>
-                  ),
-                  tabBarButton: (props) => <CustomHomeButton {...props} />,
+            {!user ? (
+              <AuthStackScreen />
+            ) : (
+              <Tab.Navigator
+                initialRouteName="Home"
+                screenOptions={{
+                  tabBarStyle: {
+                    elevation: 0,
+                    padding: 0,
+                    backgroundColor: APP_COLORS.secondary,
+                    borderTopWidth: 0,
+                  },
                 }}
-              />
-            </Tab.Navigator>
+              >
+                <Tab.Screen
+                  name="Home"
+                  children={() => <HomeStackScreen appUser={user} />}
+                  options={{
+                    headerShown: false,
+                    tabBarLabel: "",
+                    tabBarLabelStyle: { display: "none" },
+                    tabBarIcon: ({ color, size }) => (
+                      <View style={{ alignItems: "center" }}>
+                        <MaterialCommunityIcons
+                          name="dog"
+                          size={36}
+                          color={APP_COLORS.primary}
+                        />
+                      </View>
+                    ),
+                    tabBarButton: (props) => <CustomHomeButton {...props} />,
+                  }}
+                />
+              </Tab.Navigator>
+            )}
           </NavigationContainer>
         </PaperProvider>
       </SafeAreaView>
