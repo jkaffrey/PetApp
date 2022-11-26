@@ -27,6 +27,7 @@ import { APP_COLORS } from "./Helpers/colors";
 
 /** Firebase Imports */
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import LoadingScreen from "./Components/LoadingScreen";
 
 const Tab = createBottomTabNavigator();
 // https://reactnavigation.org/docs/themes/
@@ -59,6 +60,7 @@ export default function App() {
 
   /** Userbased firebase login authentication */
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(false);
 
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
@@ -106,8 +108,10 @@ export default function App() {
       >
         <PaperProvider theme={paperTheme}>
           <NavigationContainer theme={MyTheme}>
-            {!user ? (
-              <AuthStackScreen />
+            {loading ? (
+              <LoadingScreen />
+            ) : !user ? (
+              <AuthStackScreen loading={loading} setLoading={setLoading} />
             ) : (
               <Tab.Navigator
                 initialRouteName="Home"
@@ -122,7 +126,13 @@ export default function App() {
               >
                 <Tab.Screen
                   name="Home"
-                  children={() => <HomeStackScreen appUser={user} />}
+                  children={() => (
+                    <HomeStackScreen
+                      appUser={user}
+                      loading={loading}
+                      setLoading={setLoading}
+                    />
+                  )}
                   options={{
                     headerShown: false,
                     tabBarLabel: "",

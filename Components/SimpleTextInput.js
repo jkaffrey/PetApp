@@ -73,6 +73,7 @@ SimpleTextInput.defaultProps = {
   clearableInput: true,
   multiline: false,
   lightMode: true,
+  passwordInput: false,
 };
 
 const styles = StyleSheet.create({

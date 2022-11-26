@@ -8,7 +8,7 @@ import ForgotPassword from "../Screens/Authentication/ForgotPasswordScreen";
 
 const AuthStack = createStackNavigator();
 
-export default function HomeStackScreen({ appUser }) {
+export default function AuthStackScreen({ loading, setLoading }) {
   return (
     <AuthStack.Navigator
       initialRouteName="Login"
@@ -21,7 +21,9 @@ export default function HomeStackScreen({ appUser }) {
       </AuthStack.Screen>
 
       <AuthStack.Screen name="signUp" options={{ headerShown: false }}>
-        {(props) => <Signup {...props} />}
+        {(props) => (
+          <Signup {...props} loading={loading} setLoading={setLoading} />
+        )}
       </AuthStack.Screen>
 
       <AuthStack.Screen name="forgotPassword" options={{ headerShown: false }}>

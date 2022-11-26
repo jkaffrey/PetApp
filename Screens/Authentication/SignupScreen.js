@@ -10,15 +10,23 @@ import { HelperText } from "react-native-paper";
 
 import { APP_COLORS } from "../../Helpers/colors";
 import { validEmail, passwordValid } from "../../Helpers/validation";
+import { setUserDisplayName } from "../../Helpers/Database/user";
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signOut,
+} from "firebase/auth";
 import SimpleTextInput from "../../Components/SimpleTextInput";
 import { useNavigation } from "@react-navigation/native";
+import LoadingScreen from "../../Components/LoadingScreen";
 
-export default function SignUp() {
+export default function SignUp({ loading, setLoading }) {
   const navigation = useNavigation();
 
   const [email, setEmail] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -28,11 +36,22 @@ export default function SignUp() {
       return;
     }
 
+    setLoading(true);
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCreds) => {
         const uid = userCreds.user.uid;
-        // Store first name
+        updateProfile(userCreds.user, {
+          displayName: displayName,
+        })
+          .then(async () => {
+            await setUserDisplayName(uid, displayName);
+            setLoading(false);
+          })
+          .catch((err) => {
+            signOut();
+            alert("Failed to successfully create user account.", err);
+          });
       })
       .catch((error) => {
         alert("Failed to create account, please try again. \n" + error.message);
@@ -40,7 +59,7 @@ export default function SignUp() {
   };
 
   const signupDisabled = () => {
-    return !(email && password && confirmPassword);
+    return email && password && confirmPassword && confirmInvalid();
   };
 
   const emailInvalid = () => {
@@ -72,6 +91,14 @@ export default function SignUp() {
       contentContainerStyle={styles.container}
       keyboardShouldPersistTaps="handled"
     >
+      <SimpleTextInput
+        placeholder="Display Name."
+        placeholderTextColor={APP_COLORS.grey}
+        inputVal={displayName}
+        setInputVal={setDisplayName}
+        clearableInput={false}
+      />
+
       <SimpleTextInput
         placeholder="Email."
         placeholderTextColor={APP_COLORS.grey}
