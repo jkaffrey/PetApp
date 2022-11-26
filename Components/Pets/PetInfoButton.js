@@ -30,7 +30,9 @@ export default function PetInfoButton({
         if (!preventSelect) {
           setSelectedButton(label);
         }
-        onClick();
+        if (onClick) {
+          onClick();
+        }
       }}
     >
       <View style={styles.innerContainer}>
