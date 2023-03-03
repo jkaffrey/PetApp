@@ -3,6 +3,7 @@ import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
 import Carousel, { ParallaxImage } from "react-native-snap-carousel";
+import { Ionicons } from "@expo/vector-icons";
 
 import { APP_COLORS } from "../../Helpers/colors";
 
@@ -94,7 +95,12 @@ export default function PetSelector({ appUser, pets }) {
         bottom: -1 * (height * 0.19) + tabBarHeight,
       }}
     >
-      <Text style={styles.myPets}>My Pets</Text>
+      <View style={styles.header}>
+        <Text style={styles.myPets}>My Pets</Text>
+        <Pressable style={styles.addPet}>
+          <Ionicons name="add-circle" size={32} color="black" />
+        </Pressable>
+      </View>
       <Carousel
         loop={true}
         hasParallaxImages={true}
@@ -114,6 +120,15 @@ export default function PetSelector({ appUser, pets }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+
+  header: {
+    flexDirection: "row",
+  },
+
+  addPet: {
+    marginTop: 4,
+    marginLeft: 8,
   },
 
   myPets: {

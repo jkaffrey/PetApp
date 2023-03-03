@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../Screens/Home/HomeScreen";
 import NavigationBarHeader from "../Components/NavigationBarHeader";
 import PetInfoScreen from "../Screens/Home/PetInfoScreen";
+import PetPicturesScreen from "../Screens/Home/PetPicturesScreen";
 
 const HomeStack = createStackNavigator();
 
@@ -35,6 +36,10 @@ export default function HomeStackScreen({ appUser, loading, setLoading }) {
             setLoading={setLoading}
           />
         )}
+      </HomeStack.Screen>
+
+      <HomeStack.Screen name="PetPictures">
+        {(props) => <PetPicturesScreen {...props} appUser={appUser} />}
       </HomeStack.Screen>
     </HomeStack.Navigator>
   );

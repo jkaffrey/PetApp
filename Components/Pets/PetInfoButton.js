@@ -11,6 +11,8 @@ export default function PetInfoButton({
   iconName,
   selected,
   setSelectedButton,
+  onClick,
+  preventSelect,
 }) {
   let isSelected = () => {
     return selected === label;
@@ -25,7 +27,12 @@ export default function PetInfoButton({
         ...styles.mainContainer,
       }}
       onPress={() => {
-        setSelectedButton(label);
+        if (!preventSelect) {
+          setSelectedButton(label);
+        }
+        if (onClick) {
+          onClick();
+        }
       }}
     >
       <View style={styles.innerContainer}>
