@@ -11,4 +11,5 @@ export const APP_COLORS = {
   secondary: "#703D57",
   activeButton: "#D9D9D9",
   red: "#a30b37",
+  grey: "#716f6f",
 };

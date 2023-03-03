@@ -13,6 +13,7 @@ import {
   NavigationContainer,
   DefaultTheme as NativeTheme,
 } from "@react-navigation/native";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons, FontAwesome5 } from "@expo/vector-icons";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
@@ -21,10 +22,12 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import SafeAreaView from "react-native-safe-area-view";
 
 import HomeStackScreen from "./ScreenStack/HomeStackScreen";
+import AuthStackScreen from "./ScreenStack/AuthStackScreen";
 import { APP_COLORS } from "./Helpers/colors";
 
 /** Firebase Imports */
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import LoadingScreen from "./Components/LoadingScreen";
 
 const Tab = createBottomTabNavigator();
 // https://reactnavigation.org/docs/themes/
@@ -57,6 +60,7 @@ export default function App() {
 
   /** Userbased firebase login authentication */
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(false);
 
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
@@ -104,37 +108,49 @@ export default function App() {
       >
         <PaperProvider theme={paperTheme}>
           <NavigationContainer theme={MyTheme}>
-            <Tab.Navigator
-              initialRouteName="Home"
-              screenOptions={{
-                tabBarStyle: {
-                  elevation: 0,
-                  padding: 0,
-                  backgroundColor: APP_COLORS.secondary,
-                  borderTopWidth: 0,
-                },
-              }}
-            >
-              <Tab.Screen
-                name="Home"
-                children={() => <HomeStackScreen appUser={user} />}
-                options={{
-                  headerShown: false,
-                  tabBarLabel: "",
-                  tabBarLabelStyle: { display: "none" },
-                  tabBarIcon: ({ color, size }) => (
-                    <View style={{ alignItems: "center" }}>
-                      <MaterialCommunityIcons
-                        name="dog"
-                        size={36}
-                        color={APP_COLORS.primary}
-                      />
-                    </View>
-                  ),
-                  tabBarButton: (props) => <CustomHomeButton {...props} />,
+            {loading ? (
+              <LoadingScreen />
+            ) : !user ? (
+              <AuthStackScreen loading={loading} setLoading={setLoading} />
+            ) : (
+              <Tab.Navigator
+                initialRouteName="Home"
+                screenOptions={{
+                  tabBarStyle: {
+                    elevation: 0,
+                    padding: 0,
+                    backgroundColor: APP_COLORS.secondary,
+                    borderTopWidth: 0,
+                  },
                 }}
-              />
-            </Tab.Navigator>
+              >
+                <Tab.Screen
+                  name="Home"
+                  children={() => (
+                    <HomeStackScreen
+                      appUser={user}
+                      loading={loading}
+                      setLoading={setLoading}
+                    />
+                  )}
+                  options={{
+                    headerShown: false,
+                    tabBarLabel: "",
+                    tabBarLabelStyle: { display: "none" },
+                    tabBarIcon: ({ color, size }) => (
+                      <View style={{ alignItems: "center" }}>
+                        <MaterialCommunityIcons
+                          name="dog"
+                          size={36}
+                          color={APP_COLORS.primary}
+                        />
+                      </View>
+                    ),
+                    tabBarButton: (props) => <CustomHomeButton {...props} />,
+                  }}
+                />
+              </Tab.Navigator>
+            )}
           </NavigationContainer>
         </PaperProvider>
       </SafeAreaView>
